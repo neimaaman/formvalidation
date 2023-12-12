@@ -11,25 +11,47 @@
         </head>
     <body class="text-center">
             <h1 id="test"  >Text Editor</h1>
-            <button type="button"
-            onclick="document.getElementById('test').style.fontSize='35px'"> FO </button><br>
-            <button type="button" onclick="document.getElementById('test').style.display='none'">
+            <button id="btntest"  type="button" onclick="document.getElementById('test').style.display='none'">
             None</button><br>
+            <!-- we need different id because they have different purpose ex.h1 id and button id different
+            h1 id      button id focus on the display area-->
             
             
 
             <input class="border border-2 bg-blue-300"  id="email" type="text" placeholder="Email" value="">
-            <p id="messageEM">@</p>
-            <input class="border border-2 bg-green-100" id="pwd" type="text" placeholder="Password"  value="">
-            <p id="messageUC">UC</p>
-            <button type="button" onclick="document.getElementById('messageEM').style.display='none'">NoneEM</button>
-            <p id="messageLC">LC</p>
-            <p id="messageSC">SC</p>
-            <p id="messageNU">NU</p>
-            <p id="messageL">L</p>
+            <p id="messageEM" style="display: none;">@</p><br><br>
+            <input class="border border-2 bg-green-100" id="pwd" type="text" placeholder="Password"  value=""><br><br>
+            <div id="pwdMsg" style="display: none;">
+                    <!-- i gave it a parent div to make function and add event listener for all instead of for each line  -->
+                <p id="messageUC">UC</p>
+                <p id="messageLC">LC</p>
+                <p id="messageSC">SC</p>
+                <p id="messageNU">NU</p>
+                <p id="messageL">L</p>
+            </div>
             <button id="btn">checker</button>
 
             <script>
+                function checkh() {
+                    document.getElementById('btntest').style.display='none';
+                    document.getElementById('test').style.fontSize='35px';  
+                }
+                
+                function hide() {
+                    document.getElementById('pwdMsg').style.display= 'none';
+                }
+                function show() {
+                    document.getElementById('pwdMsg').style.display= 'block';
+                }
+
+                function hideEM() {
+                    document.getElementById('messageEM').style.display= 'none';
+                }
+                function showEM() {
+                    document.getElementById('messageEM').style.display= 'block';
+                }
+
+               
 
                 function checkEM() {
                     // grab the input value and assign it to x
@@ -44,7 +66,7 @@
                      // if it is not true say 'invalid email'
                     document.getElementById('messageEM').innerHTML = 'invalid email';    
                     }
-                    
+                
                  
                 }
                 function checkSC() {
@@ -107,8 +129,6 @@
                    
                     }
                 }   
-                   
-            
                 function checkNU(){
                     // grab value from input box and assign it to x
                     let x = document.getElementById('pwd').value;
@@ -123,12 +143,28 @@
                     document.getElementById('messageNU').innerHTML = 'Nay NU';
                     }
                 }
+                
                 document.getElementById("pwd").addEventListener("keyup", checkUC);
                 document.getElementById("pwd").addEventListener("keyup", checkLC);
                 document.getElementById("pwd").addEventListener("keyup", checkSC);
                 document.getElementById("pwd").addEventListener("keyup", checkL);
                 document.getElementById("pwd").addEventListener("keyup", checkNU);
                 document.getElementById("email").addEventListener("keyup", checkEM);
+
+                document.getElementById("btntest").addEventListener("mouseover", checkh );
+                document.getElementById('messageEM').addEventListener("mouseover" ,checkEM);
+
+                document.getElementById('pwd').addEventListener("keyup" ,show);
+                document.getElementById('pwd').addEventListener("blur" ,hide);
+
+                document.getElementById('email').addEventListener("keyup"  ,showEM);
+                document.getElementById('email').addEventListener("blur" ,hideEM);
+
+
+                
+                
+               
+                
             </script>
     </body>
 </html>
