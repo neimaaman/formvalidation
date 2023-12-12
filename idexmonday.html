@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+            <script src="https://cdn.tailwindcss.com"></script>
+           
+
+        </head>
+    <body class="text-center">
+            <h1 id="test"  >Text Editor</h1>
+            <button type="button"
+            onclick="document.getElementById('test').style.fontSize='35px'"> FO </button><br>
+            <button type="button" onclick="document.getElementById('test').style.display='none'">
+            None</button><br>
+            
+            
+
+            <input class="border border-2 bg-blue-300"  id="email" type="text" placeholder="Email" value="">
+            <p id="messageEM">@</p>
+            <input class="border border-2 bg-green-100" id="pwd" type="text" placeholder="Password"  value="">
+            <p id="messageUC">UC</p>
+            <button type="button" onclick="document.getElementById('messageEM').style.display='none'">NoneEM</button>
+            <p id="messageLC">LC</p>
+            <p id="messageSC">SC</p>
+            <p id="messageNU">NU</p>
+            <p id="messageL">L</p>
+            <button id="btn">checker</button>
+
+            <script>
+
+                function checkEM() {
+                    // grab the input value and assign it to x
+                    let emailValue = document.getElementById('email').value;
+                    // define the condition
+                    let conditionEM = /@/g;
+                    // compare value to our condition 
+                    if (emailValue.match(conditionEM)) {
+                    // if it true say 'valid email'
+                    document.getElementById('messageEM').innerHTML = 'valid email'; 
+                    } else {
+                     // if it is not true say 'invalid email'
+                    document.getElementById('messageEM').innerHTML = 'invalid email';    
+                    }
+                    
+                 
+                }
+                function checkSC() {
+                    // grab value and assign it to x
+                    let x = document.getElementById('pwd').value;
+                    // define codition
+                    let patternSC = /[!@#$%^&*()-_=+]/g;
+                    // compare value to condition
+                    if (x.match(patternSC)) {            
+                    // if true say 'yay'
+                    document.getElementById('messageSC').innerHTML = 'yay SC';
+                    } else{
+                    // else it is false say 'nay'
+                    document.getElementById('messageSC').innerHTML = 'boo SC';
+                    }
+                }
+                function checkLC() {
+                    // grab the value and assign it to x
+                    let x = document.getElementById('pwd').value;
+                    // define codition
+                    let patternLC = /[abcdefghijklmnopqrstuvwxyz]/g;
+                    // compare the value to our condition
+                    if (x.match(patternLC)) {
+                    // if it is true say 'yay'
+                    document.getElementById('messageLC').innerHTML = 'Yay LC'; 
+                    } else {
+                    // if it is false say 'nay'
+                    document.getElementById('messageLC').innerHTML = 'Nay LC';
+                    }
+                       
+                        
+                }
+                function checkUC() {
+                    // grab value and assign it to x
+                    let x = document.getElementById('pwd').value;
+                    // define codition
+                    let patternUC = /[A-Z]/g;
+                    // compare value to condition
+                    if (x.match(patternUC)) {            
+                    // if true say 'yay'
+                    document.getElementById('messageUC').innerHTML = 'yay UC';
+                    } else{
+                    // else it is false say 'nay'
+                    document.getElementById('messageUC').innerHTML = 'boo UC';
+                   
+                    } 
+                }
+                function checkL() {
+                    // grab value and assign it to x
+                    let x = document.getElementById('pwd').value;
+                    // define codition
+                    let minL = 7 ;
+                    // compare value to condition
+                    if (x.length > minL) {            
+                    // if true say 'yay'
+                    document.getElementById('messageL').innerHTML = 'yay L';
+                    } else{
+                    // else it is false say 'nay'
+                    document.getElementById('messageL').innerHTML = 'boo L';
+                   
+                    }
+                }   
+                   
+            
+                function checkNU(){
+                    // grab value from input box and assign it to x
+                    let x = document.getElementById('pwd').value;
+                    // define the condition(the condition is what we thik we have to put as a criteria)
+                    let patternNU = /[1234567890]/d;
+                    // compare the value to our condition
+                    if (x.match(patternNU)) {
+                    // if it is true say 'Yay'
+                    document.getElementById('messageNU').innerHTML = 'Yay NU';
+                    } else {
+                    // if it is false say 'Nay'
+                    document.getElementById('messageNU').innerHTML = 'Nay NU';
+                    }
+                }
+                document.getElementById("pwd").addEventListener("keyup", checkUC);
+                document.getElementById("pwd").addEventListener("keyup", checkLC);
+                document.getElementById("pwd").addEventListener("keyup", checkSC);
+                document.getElementById("pwd").addEventListener("keyup", checkL);
+                document.getElementById("pwd").addEventListener("keyup", checkNU);
+                document.getElementById("email").addEventListener("keyup", checkEM);
+            </script>
+    </body>
+</html>

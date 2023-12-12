@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function great() {
+            // get the value from input box and call it x
+            let x = document.getElementById('num').value;
+            // if the input box value is greater than 10
+            if (x > 10) {
+                // true say "yay"
+                document.getElementById('message').innerHTML = 'Yay'; 
+            } else {
+                // else if false say "boo" 
+                document.getElementById('message').innerHTML = 'Boo';
+            }  x > 10
+           
+           
+        }
+
+        
+    </script>
+</head>
+<body>
+    <p id="message"> message area</p>
+    <input id="num" value="">
+    <button onclick="great()">check number</button>
+</body>
+</html>
